@@ -43,4 +43,8 @@ public class CarController : MonoBehaviour
             transform.Rotate(rotationSpeed * -tr.up * Time.deltaTime);
         }
     }
+    public float GetCurrentSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
 }
