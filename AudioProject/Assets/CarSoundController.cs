@@ -9,6 +9,7 @@ public class CarSoundController : MonoBehaviour
     private float pitchFromCar;
     CarController controller;
     public AudioSource driftSound;
+    public AudioSource crashSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,20 +46,20 @@ public class CarSoundController : MonoBehaviour
             dot = 1;
 
         driftSound.volume = (1 - dot) * 1.6f;
-
-
-        Debug.Log(1 - dot);
+        driftSound.pitch =  1 + driftSound.volume * 0.3f;
     }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "wall")
+        if (collision.gameObject.CompareTag("wall"))
         {
-            if(controller.speed > 35)
+            if(controller.GetCurrentSpeed() > 35)
             {
                 //crash
+                Debug.Log("wall collsion");
+                crashSound.Play();
             }
-            //crash
+
         }
     }
 }
