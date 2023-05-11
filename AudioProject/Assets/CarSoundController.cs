@@ -55,8 +55,6 @@ public class CarSoundController : MonoBehaviour
         {
             if(controller.GetCurrentSpeed() > 35)
             {
-                //crash
-                Debug.Log("wall collsion");
                 crashSound.Play();
             }
 
